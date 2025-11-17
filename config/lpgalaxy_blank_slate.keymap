@@ -18,96 +18,6 @@
 #define ADJUST  5
 
 / {
-    behaviors {
-        // Custom hold-tap for Hyper-Tab (ALL_T in QMK)
-        hpr_tab: hyper_tab {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HYPER_TAB";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
-        // Custom hold-tap for Meh-Grave (MEH_T in QMK)
-        meh_grv: meh_grave {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MEH_GRAVE";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
-        // Custom hold-tap for Control-Escape
-        ctl_esc: control_escape {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CTRL_ESC";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
-        // Custom hold-tap for Shift-Enter
-        sft_ent: shift_enter {
-            compatible = "zmk,behavior-hold-tap";
-            label = "SHIFT_ENTER";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
-        // Custom hold-tap for ALL_T(0) in Lower layer
-        all_0: all_zero {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ALL_ZERO";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
-        // Custom hold-tap for CTL_T(KC_DLR) in Lower layer
-        ctl_dlr: control_dollar {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CTRL_DOLLAR";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
-        // Custom hold-tap for ALL_T(KC_TILD) in Raise layer
-        all_tild: all_tilde {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ALL_TILDE";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
-        // Custom hold-tap for SFT_T(KC_BSLS) in Raise layer
-        sft_bsls: shift_backslash {
-            compatible = "zmk,behavior-hold-tap";
-            label = "SHIFT_BSLS";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-    };
-
     // Conditional layer for tri-layer (Lower + Raise = Adjust)
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -123,60 +33,60 @@
         // QWERTY Layer
         qwerty_layer {
             bindings = <
-                &hpr_tab LC(LS(LA(LGUI))) TAB  &kp Q      &kp W      &kp E       &kp R      &kp T        &kp Y      &kp U      &kp I       &kp O       &kp P          &kp BSPC
-                &ctl_esc LCTRL ESC            &kp A      &kp S      &kp D       &kp F      &kp G        &kp H      &kp J      &kp K       &kp L       &kp SEMI       &kp SQT
-                &kp LSHFT                     &kp Z      &kp X      &kp C       &kp V      &kp B        &kp N      &kp M      &kp COMMA   &kp DOT     &kp FSLH       &sft_ent RSHFT RET
-                &meh_grv LC(LA(LSHFT)) GRAVE  &kp LCTRL  &kp LALT   &kp LGUI    &mo LOWER  &kp SPACE    &kp SPACE  &mo RAISE  &kp LEFT    &kp DOWN    &kp UP         &kp RIGHT
+                &mt LC(LS(LA(LGUI))) TAB  &kp Q      &kp W      &kp E       &kp R      &kp T        &kp Y      &kp U      &kp I       &kp O       &kp P          &kp BSPC
+                &mt LCTRL ESC             &kp A      &kp S      &kp D       &kp F      &kp G        &kp H      &kp J      &kp K       &kp L       &kp SEMI       &kp SQT
+                &kp LSHFT                 &kp Z      &kp X      &kp C       &kp V      &kp B        &kp N      &kp M      &kp COMMA   &kp DOT     &kp FSLH       &mt RSHFT RET
+                &mt LC(LA(LSHFT)) GRAVE   &kp LCTRL  &kp LALT   &kp LGUI    &mo LOWER  &kp SPACE    &kp SPACE  &mo RAISE  &kp LEFT    &kp DOWN    &kp UP         &kp RIGHT
             >;
         };
 
         // COLEMAK Layer
         colemak_layer {
             bindings = <
-                &hpr_tab LC(LS(LA(LGUI))) TAB  &kp Q      &kp W      &kp F       &kp P      &kp G        &kp J      &kp L      &kp U       &kp Y       &kp SEMI       &kp BSPC
-                &ctl_esc LCTRL ESC            &kp A      &kp R      &kp S       &kp T      &kp D        &kp H      &kp N      &kp E       &kp I       &kp O          &kp SQT
-                &kp LSHFT                     &kp Z      &kp X      &kp C       &kp V      &kp B        &kp K      &kp M      &kp COMMA   &kp DOT     &kp FSLH       &sft_ent RSHFT RET
-                &meh_grv LC(LA(LSHFT)) GRAVE  &kp LCTRL  &kp LALT   &kp LGUI    &mo LOWER  &kp SPACE    &kp SPACE  &mo RAISE  &kp LEFT    &kp DOWN    &kp UP         &kp RIGHT
+                &mt LC(LS(LA(LGUI))) TAB  &kp Q      &kp W      &kp F       &kp P      &kp G        &kp J      &kp L      &kp U       &kp Y       &kp SEMI       &kp BSPC
+                &mt LCTRL ESC             &kp A      &kp R      &kp S       &kp T      &kp D        &kp H      &kp N      &kp E       &kp I       &kp O          &kp SQT
+                &kp LSHFT                 &kp Z      &kp X      &kp C       &kp V      &kp B        &kp K      &kp M      &kp COMMA   &kp DOT     &kp FSLH       &mt RSHFT RET
+                &mt LC(LA(LSHFT)) GRAVE   &kp LCTRL  &kp LALT   &kp LGUI    &mo LOWER  &kp SPACE    &kp SPACE  &mo RAISE  &kp LEFT    &kp DOWN    &kp UP         &kp RIGHT
             >;
         };
 
         // DVORAK Layer
         dvorak_layer {
             bindings = <
-                &hpr_tab LC(LS(LA(LGUI))) TAB  &kp SQT    &kp COMMA  &kp DOT     &kp P      &kp Y        &kp F      &kp G      &kp C       &kp R       &kp L          &kp BSPC
-                &ctl_esc LCTRL ESC            &kp A      &kp O      &kp E       &kp U      &kp I        &kp D      &kp H      &kp T       &kp N       &kp S          &kp MINUS
-                &kp LSHFT                     &kp SEMI   &kp Q      &kp J       &kp K      &kp X        &kp B      &kp M      &kp W       &kp V       &kp Z          &sft_ent RSHFT RET
-                &meh_grv LC(LA(LSHFT)) GRAVE  &kp LCTRL  &kp LALT   &kp LGUI    &mo LOWER  &kp SPACE    &kp SPACE  &mo RAISE  &kp LEFT    &kp DOWN    &kp UP         &kp RIGHT
+                &mt LC(LS(LA(LGUI))) TAB  &kp SQT    &kp COMMA  &kp DOT     &kp P      &kp Y        &kp F      &kp G      &kp C       &kp R       &kp L          &kp BSPC
+                &mt LCTRL ESC             &kp A      &kp O      &kp E       &kp U      &kp I        &kp D      &kp H      &kp T       &kp N       &kp S          &kp MINUS
+                &kp LSHFT                 &kp SEMI   &kp Q      &kp J       &kp K      &kp X        &kp B      &kp M      &kp W       &kp V       &kp Z          &mt RSHFT RET
+                &mt LC(LA(LSHFT)) GRAVE   &kp LCTRL  &kp LALT   &kp LGUI    &mo LOWER  &kp SPACE    &kp SPACE  &mo RAISE  &kp LEFT    &kp DOWN    &kp UP         &kp RIGHT
             >;
         };
 
         // LOWER Layer
         lower_layer {
             bindings = <
-                &all_0 LC(LS(LA(LGUI))) N0  &kp N1     &kp N2     &kp N3      &kp N4     &kp N5       &kp N6     &kp N7     &kp N8       &kp N9       &kp N0         &kp DEL
-                &ctl_dlr LCTRL DLLR         &kp F1     &kp F2     &kp F3      &kp F4     &kp F5       &kp F6     &kp N4     &kp N5       &kp N6       &trans         &trans
-                &trans                      &kp F7     &kp F8     &kp F9      &kp F10    &kp F11      &kp F12    &kp N1     &kp N2       &kp N3       &trans         &trans
-                &trans                      &trans     &trans     &trans      &trans     &trans       &kp N0     &kp DOT    &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP   &kp C_PP
+                &mt LC(LS(LA(LGUI))) N0   &kp N1     &kp N2     &kp N3      &kp N4     &kp N5       &kp N6     &kp N7     &kp N8       &kp N9       &kp N0         &kp DEL
+                &mt LCTRL DLLR            &kp F1     &kp F2     &kp F3      &kp F4     &kp F5       &kp F6     &kp N4     &kp N5       &kp N6       &trans         &trans
+                &trans                    &kp F7     &kp F8     &kp F9      &kp F10    &kp F11      &kp F12    &kp N1     &kp N2       &kp N3       &trans         &trans
+                &trans                    &trans     &trans     &trans      &trans     &trans       &kp N0     &kp DOT    &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP   &kp C_PP
             >;
         };
 
         // RAISE Layer
         raise_layer {
             bindings = <
-                &all_tild LC(LS(LA(LGUI))) TILDE  &kp EXCL   &kp AT     &kp HASH    &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS   &kp STAR     &kp LPAR     &kp RPAR       &kp DEL
-                &trans                            &trans     &trans     &trans      &trans     &trans       &kp UNDER  &kp QMARK  &kp PLUS     &kp LBRC     &kp RBRC       &kp PIPE
-                &trans                            &trans     &trans     &trans      &trans     &trans       &kp MINUS  &kp FSLH   &kp EQUAL    &kp LBKT     &kp RBKT       &sft_bsls RSHFT BSLH
-                &trans                            &trans     &trans     &trans      &trans     &trans       &trans     &trans     &kp HOME     &kp PG_DN    &kp PG_UP      &kp END
+                &mt LC(LS(LA(LGUI))) TILDE  &kp EXCL   &kp AT     &kp HASH    &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS   &kp STAR     &kp LPAR     &kp RPAR       &kp DEL
+                &trans                      &trans     &trans     &trans      &trans     &trans       &kp UNDER  &kp QMARK  &kp PLUS     &kp LBRC     &kp RBRC       &kp PIPE
+                &trans                      &trans     &trans     &trans      &trans     &trans       &kp MINUS  &kp FSLH   &kp EQUAL    &kp LBKT     &kp RBKT       &mt RSHFT BSLH
+                &trans                      &trans     &trans     &trans      &trans     &trans       &trans     &trans     &kp HOME     &kp PG_DN    &kp PG_UP      &kp END
             >;
         };
 
         // ADJUST Layer (Lower + Raise)
         adjust_layer {
             bindings = <
-                &trans  &bootloader  &trans     &trans      &trans     &trans       &trans     &trans     &trans       &trans       &trans         &bootloader
-                &trans  &trans       &trans     &trans      &trans     &trans       &trans     &to QWERTY &to COLEMAK  &to DVORAK   &trans         &trans
-                &trans  &rgb_ug RGB_TOG &rgb_ug RGB_EFF &trans &trans  &trans       &trans     &trans     &trans       &trans       &trans         &trans
-                &trans  &trans       &trans     &trans      &trans     &trans       &trans     &trans     &trans       &trans       &trans         &trans
+                &trans  &bootloader      &trans     &trans      &trans     &trans       &trans     &trans     &trans       &trans       &trans         &bootloader
+                &trans  &trans           &trans     &trans      &trans     &trans       &trans     &to QWERTY &to COLEMAK  &to DVORAK   &trans         &trans
+                &trans  &rgb_ug RGB_TOG  &rgb_ug RGB_EFF &trans &trans     &trans       &trans     &trans     &trans       &trans       &trans         &trans
+                &trans  &trans           &trans     &trans      &trans     &trans       &trans     &trans     &trans       &trans       &trans         &trans
             >;
         };
     };
